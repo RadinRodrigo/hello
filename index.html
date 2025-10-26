@@ -10,7 +10,7 @@
     <script>
         // Function to send a request to Shopify's __dux endpoint
         function fetchShopifyData() {
-            fetch('/__dux', {
+            fetch('https://www.shopify.com/__dux', {
                 method: 'POST', // Assuming POST method based on response headers
                 credentials: 'include', // Include cookies in the request
                 headers: {
